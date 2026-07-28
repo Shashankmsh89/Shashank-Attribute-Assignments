@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attribute Management System</title>
+  <meta name="description" content="Manage business attributes with filtering, sorting, search and CRUD workflows.">
+  <meta property="og:title" content="Attribute Management System">
+  <meta property="og:description" content="Accessible enterprise-style attribute catalog for business operations.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://example.com/attribute-app">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body data-page="dashboard">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header role="banner" class="site-header">
+    <div class="site-header__brand">
+      <p class="eyebrow">Enterprise operations</p>
+      <h1>Attribute Management System</h1>
+    </div>
+    <nav role="navigation" aria-label="Primary" class="site-nav">
+      <ul>
+        <li><a href="index.html" aria-current="page">Dashboard</a></li>
+        <li><a href="add-attribute.html">Add attribute</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content" class="page-shell">
+    <section class="page-panel" aria-labelledby="catalog-heading">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Catalog</p>
+          <h2 id="catalog-heading">Attribute catalog</h2>
+        </div>
+        <a class="btn btn--secondary" href="add-attribute.html">Create attribute</a>
+      </div>
+
+      <form id="filter-form" class="filter-form" role="search" aria-label="Filter attributes">
+        <div class="field-group">
+          <label for="search">Search</label>
+          <input id="search" name="search" type="search" inputmode="search" autocomplete="off"
+            placeholder="Search attributes">
+        </div>
+
+        <div class="field-group">
+          <label for="business-unit">Business unit</label>
+          <select id="business-unit" name="businessUnit">
+            <option value="">All business units</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label for="status">Status</label>
+          <select id="status" name="status">
+            <option value="">All</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+        </div>
+
+        <div class="field-group field-group--actions">
+          <button type="submit" class="btn">Apply</button>
+          <button type="reset" class="btn btn--ghost">Reset</button>
+        </div>
+      </form>
+
+      <div id="results-status" class="results-status" aria-live="polite"></div>
+
+      <div class="table-card">
+        <div class="table-toolbar">
+          <h3>Current records</h3>
+          <button type="button" id="theme-toggle" class="btn btn--ghost" aria-pressed="false">Dark mode</button>
+        </div>
+
+        <div class="table-shell">
+          <table class="data-table" data-table>
+            <caption>List of managed attributes</caption>
+            <thead>
+              <tr>
+                <th scope="col"><button type="button" class="sort-button" data-action="sort"
+                    data-sort-by="attributeName">Attribute name</button></th>
+                <th scope="col"><button type="button" class="sort-button" data-action="sort"
+                    data-sort-by="businessUnit">Business unit</button></th>
+                <th scope="col"><button type="button" class="sort-button" data-action="sort"
+                    data-sort-by="customerLocation">Location</button></th>
+                <th scope="col"><button type="button" class="sort-button" data-action="sort"
+                    data-sort-by="company">Company</button></th>
+                <th scope="col"><button type="button" class="sort-button" data-action="sort"
+                    data-sort-by="isActive">Status</button></th>
+                <th scope="col"><button type="button" class="sort-button" data-action="sort"
+                    data-sort-by="createdOn">Created on</button></th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="attribute-table-body"></tbody>
+          </table>
+        </div>
+
+        <nav id="pagination" class="pagination" aria-label="Pagination"></nav>
+        <p id="pagination-label" class="pagination-label" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <aside class="sidebar-stack" aria-label="Dashboard insights">
+      <section class="card card--hero">
+        <p class="eyebrow">Overview</p>
+        <h3 id="overview-title">Operational posture</h3>
+        <p>Review the current attribute inventory alongside governance signals.</p>
+        <div class="stat-grid">
+          <article class="stat-card">
+            <span class="stat-label">Total</span>
+            <strong id="stat-total">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Active</span>
+            <strong id="stat-active">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Inactive</span>
+            <strong id="stat-inactive">0</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Guidance</h3>
+        <ul class="stack-list">
+          <li>Use the search to jump to a specific attribute quickly.</li>
+          <li>Keep the business unit filters aligned with operational ownership.</li>
+          <li>Use form validation to prevent inconsistent records.</li>
+        </ul>
+      </section>
+    </aside>
+  </main>
+
+  <footer role="contentinfo" class="site-footer">
+    <p>© 2026 Attribute Management System · Built with semantic HTML, CSS and vanilla JavaScript.</p>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

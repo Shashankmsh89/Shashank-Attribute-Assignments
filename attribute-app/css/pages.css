@@ -1,0 +1,298 @@
+.filter-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    align-items: end;
+    margin-top: 1rem;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.field-group--full {
+    grid-column: 1 / -1;
+}
+
+.field-group--actions {
+    display: flex;
+    flex-direction: row;
+    gap: 0.65rem;
+}
+
+.field-group label,
+.field-group legend {
+    font-weight: 700;
+}
+
+.field-group input,
+.field-group select,
+.field-group textarea {
+    width: 100%;
+    padding: 0.72rem 0.85rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+}
+
+.field-group input:focus,
+.field-group select:focus,
+.field-group textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.16);
+}
+
+.field-group:has(input:focus, select:focus, textarea:focus) {
+    border-color: var(--color-primary);
+}
+
+.field-hint {
+    font-size: 0.8rem;
+    color: var(--color-muted);
+}
+
+.field-error {
+    min-height: 1.25rem;
+    font-size: 0.85rem;
+    color: var(--color-danger);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+fieldset.field-group {
+    padding: 0.6rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.5rem;
+}
+
+fieldset.field-group legend {
+    padding: 0 0.4rem;
+    font-weight: 700;
+}
+
+.radio-group {
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: center;
+    background: var(--color-surface);
+    padding: 0.25rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+}
+
+.radio-group label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--color-muted);
+    background: transparent;
+    border: 0;
+}
+
+.radio-group label::before {
+    content: "";
+    width: 0.9rem;
+    height: 0.9rem;
+    border-radius: 50%;
+    border: 2px solid var(--color-border);
+    background: transparent;
+    display: inline-block;
+    flex: 0 0 auto;
+}
+
+.radio-group label:has(input:checked) {
+    background: linear-gradient(180deg, rgba(37, 99, 235, 0.06), rgba(37, 99, 235, 0.02));
+    color: var(--color-primary);
+    box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.04);
+}
+
+.radio-group label:has(input:checked)::before {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.06);
+}
+
+.radio-group input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.calendar-toolbar {
+    display: flex;
+    margin-top: 0.35rem;
+}
+
+.calendar-picker {
+    padding: 0.5rem 0.8rem;
+    border-radius: 999px;
+}
+
+.calendar-picker svg {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Place calendar icon inside the date input */
+.field-group {
+    position: relative;
+    /* size of the in-field icon (use rems, no fixed pixels) */
+    --date-icon-size: 1.4rem;
+}
+
+/* Give the date input logical end padding that accommodates the icon */
+.field-group input[type="date"] {
+    /* reduce the extra gap so text and icon sit closer (icon width + ~8px gap) */
+    padding-inline-end: calc(var(--date-icon-size) + 0.35rem);
+    /* fallback for older UAs */
+    padding-right: calc(var(--date-icon-size) + 0.35rem);
+}
+
+/* Hide only the browser's built-in calendar indicator while preserving native picker behavior */
+/* WebKit/Blink (Chrome, Edge, Safari) */
+.field-group input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+    opacity: 0;
+}
+
+/* Some engines expose clear/spinner controls — hide them for consistency */
+.field-group input[type="date"]::-webkit-clear-button,
+.field-group input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+/* Firefox — keep native picker but remove the indicator glyph; still allow clicks/focus to open picker */
+.field-group input[type="date"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* Position the icon inside the input border using logical inset values */
+.field-group .calendar-toolbar {
+    position: absolute;
+    /* sit the icon ~8px from the input border for a tighter alignment */
+    inset-inline-end: 0.35rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    pointer-events: auto;
+}
+
+.field-group .calendar-picker {
+    width: var(--date-icon-size);
+    height: var(--date-icon-size);
+    padding: 0;
+    border-radius: 0.375rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+@media (max-width: 700px) {
+
+    .table-toolbar h3 {
+        text-align: center;
+    }
+
+    /* Center the table caption within the scroll container on small screens
+       without changing table layout or horizontal scrolling. */
+    .table-shell {
+        position: relative;
+    }
+
+    .data-table caption {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 0.6rem;
+        white-space: nowrap;
+        text-align: center;
+        background: transparent;
+        padding: 0 0.25rem;
+    }
+
+    /* Add space so caption doesn't overlap the first row/card */
+    .data-table {
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 700px) {
+
+    .section-head,
+    .table-toolbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .calendar-toolbar {
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+}
+
+.form-error-summary {
+    margin-bottom: 1rem;
+    padding: 0.9rem 1rem;
+    border-radius: var(--radius-md);
+    background: rgba(180, 35, 24, 0.1);
+    border: 1px solid rgba(180, 35, 24, 0.22);
+    color: var(--color-danger);
+}
+
+.form-error-summary ul {
+    display: grid;
+    gap: 0.4rem;
+    margin-top: 0.4rem;
+}
+
+.page-panel :is(h2, h3) {
+    margin-bottom: 0.4rem;
+}
+
+.card:not(.card--hero) {
+    border-style: dashed;
+}
+
+@media (max-width: 700px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-form {
+        grid-template-columns: 1fr;
+    }
+
+    .field-group--actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

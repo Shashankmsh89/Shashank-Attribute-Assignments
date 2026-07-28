@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Attribute | Attribute Management System</title>
+  <meta name="description" content="Create a new attribute entry in the management system.">
+  <meta property="og:title" content="Add Attribute">
+  <meta property="og:description" content="Create a new attribute entry in the management system.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://example.com/attribute-app/add-attribute.html">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body data-page="add">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header role="banner" class="site-header">
+    <div class="site-header__brand">
+      <p class="eyebrow">Operations</p>
+      <h1>Add attribute</h1>
+    </div>
+    <nav role="navigation" aria-label="Primary" class="site-nav">
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="add-attribute.html" aria-current="page">Add attribute</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content" class="page-shell page-shell--form">
+    <section class="page-panel" aria-labelledby="form-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Create</p>
+          <h2 id="form-title">Add attribute</h2>
+        </div>
+        <a class="btn btn--ghost" href="index.html">Cancel</a>
+      </div>
+
+      <div id="form-error-summary" class="form-error-summary" role="alert" aria-live="assertive" hidden></div>
+
+      <form id="attribute-form" method="post" action="#" novalidate aria-labelledby="form-title">
+        <input type="hidden" id="attributeId" name="attributeId">
+
+        <fieldset class="form-grid">
+          <legend class="sr-only">Attribute details</legend>
+
+          <div class="field-group field-group--full">
+            <label for="attributeName">Attribute name</label>
+            <input id="attributeName" name="attributeName" type="text" required minlength="3" maxlength="100" pattern="[A-Za-z0-9 _-]+" aria-required="true" aria-describedby="attributeName-hint attributeName-error" autocomplete="off">
+            <p id="attributeName-hint" class="field-hint">Only letters, numbers, spaces, _ and - are allowed.</p>
+            <p id="attributeName-error" class="field-error" data-error-for="attributeName" role="alert" aria-live="polite"></p>
+          </div>
+
+          <div class="field-group">
+            <label for="businessUnit">Business unit</label>
+            <select id="businessUnit" name="businessUnit" required aria-required="true" aria-describedby="businessUnit-hint businessUnit-error"></select>
+            <p id="businessUnit-hint" class="field-hint">Choose the owning business unit.</p>
+            <p id="businessUnit-error" class="field-error" data-error-for="businessUnit" role="alert" aria-live="polite"></p>
+          </div>
+
+          <div class="field-group">
+            <label for="customerLocation">Customer location</label>
+            <select id="customerLocation" name="customerLocation" required aria-required="true" aria-describedby="customerLocation-hint customerLocation-error"></select>
+            <p id="customerLocation-hint" class="field-hint">Select the customer location.</p>
+            <p id="customerLocation-error" class="field-error" data-error-for="customerLocation" role="alert" aria-live="polite"></p>
+          </div>
+
+          <div class="field-group">
+            <label for="company">Company</label>
+            <select id="company" name="company" required aria-required="true" aria-describedby="company-hint company-error"></select>
+            <p id="company-hint" class="field-hint">Select the related company.</p>
+            <p id="company-error" class="field-error" data-error-for="company" role="alert" aria-live="polite"></p>
+          </div>
+
+          <fieldset class="field-group field-group--full">
+            <legend>Status</legend>
+            <div class="radio-group">
+              <label><input type="radio" name="isActive" value="true" checked> Active</label>
+              <label><input type="radio" name="isActive" value="false"> Inactive</label>
+            </div>
+          </fieldset>
+
+          <div class="field-group">
+            <label for="createdOn">Created on</label>
+            <input type="date" id="createdOn" name="createdOn" required aria-required="true" aria-describedby="createdOn-hint createdOn-error">
+            <p id="createdOn-hint" class="field-hint">Choose the attribute creation date.</p>
+            <p id="createdOn-error" class="field-error" data-error-for="createdOn" role="alert" aria-live="polite"></p>
+          </div>
+
+          <div class="field-group field-group--full">
+            <label for="notes">Notes</label>
+            <textarea id="notes" name="notes" rows="5" maxlength="500" aria-describedby="notes-hint notes-error"></textarea>
+            <p id="notes-hint" class="field-hint">Maximum 500 characters.</p>
+            <p id="notes-error" class="field-error" data-error-for="notes" role="alert" aria-live="polite"></p>
+          </div>
+        </fieldset>
+
+        <div class="form-actions">
+          <button type="submit" class="btn">Save attribute</button>
+          <button type="reset" class="btn btn--ghost">Reset</button>
+          <a class="btn btn--link" href="index.html">Cancel</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer role="contentinfo" class="site-footer">
+    <p>© 2026 Attribute Management System</p>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

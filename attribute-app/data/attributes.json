@@ -1,0 +1,5 @@
+[
+  {"id":"attr-001","attributeName":"Customer Type","businessUnit":"sales","customerLocation":"ahmedabad","company":"amicus","isActive":true,"createdOn":"2026-01-15","notes":"Primary segmentation attribute for customer onboarding.","createdBy":"Administrator"},
+  {"id":"attr-002","attributeName":"Payment Term","businessUnit":"finance","customerLocation":"pune","company":"invozone","isActive":true,"createdOn":"2025-12-18","notes":"Defines the default payment interval for invoices.","createdBy":"Administrator"},
+  {"id":"attr-003","attributeName":"Support Tier","businessUnit":"hr","customerLocation":"raipur","company":"people-first","isActive":false,"createdOn":"2025-11-05","notes":"Tracks the support coverage tier assigned to a client.","createdBy":"Operations"}
+]
