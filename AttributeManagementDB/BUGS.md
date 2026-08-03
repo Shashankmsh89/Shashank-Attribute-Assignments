@@ -1,14 +1,34 @@
-# BUGS and Reorganization Notes
+# Deliberate Bugs
 
-## Duplicate objects detected before reorganization
-- shashank.uspSaveAttribute is defined in more than one source script:
-  - SQL/assignment4_query.sql
-  - SQL/assignment5query.sql
-- The stored procedure file in this project uses the later Assignment 5 implementation so the object is represented once in the new folder structure.
+## Bug 1 – UPDATE without WHERE
 
-## Missing objects detected before reorganization
-- No database objects were missing from the source SQL; all relevant schema, data, procedure, function, and index definitions were captured in the new structure.
+### Description
+A demonstration of how an UPDATE statement without a WHERE clause can unintentionally modify every record.
 
-## Notes
-- Standalone query exercises and isolation-level demo scripts were intentionally not moved into the object folders because they do not define reusable database objects.
-- SQL logic and comments were preserved; only the project organization was changed.
+### Cause
+The filtering condition was omitted.
+
+### Fix
+Always include an appropriate WHERE clause before executing UPDATE statements.
+
+### Lesson Learned
+Review UPDATE statements carefully before execution.
+
+---
+
+## Bug 2 – Foreign Key Constraint Violation
+
+### Description
+Attempting to insert an Attribute using a CompanyId that does not exist.
+
+### Cause
+The referenced parent record was missing.
+
+### Error
+The INSERT statement conflicted with the FOREIGN KEY constraint.
+
+### Fix
+Insert the parent Company record first or use a valid CompanyId.
+
+### Lesson Learned
+Maintain referential integrity by validating foreign keys before inserting child records.
